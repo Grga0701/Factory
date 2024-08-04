@@ -23,6 +23,10 @@ class Order
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
+    #[ORM\Column]
+    private ?string $dynamicFields = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,6 +52,17 @@ class Order
     public function setDate(?\DateTimeInterface $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+    public function getDynamicFields(): string
+    {
+        return $this->dynamicFields;
+    }
+
+    public function setDynamicFields(string $dynamicFields): static
+    {
+        $this->dynamicFields = $dynamicFields;
 
         return $this;
     }

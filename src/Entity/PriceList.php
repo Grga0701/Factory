@@ -24,9 +24,6 @@ class PriceList
     #[ORM\Column]
     private ?int $SKU = null;
 
-    #[ORM\Column]
-    private ?int $userId = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -64,18 +61,6 @@ class PriceList
     public function setSKU(int $SKU): static
     {
         $this->SKU = $SKU;
-
-        return $this;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(int $userId): static
-    {
-        $this->userId = $userId;
 
         return $this;
     }

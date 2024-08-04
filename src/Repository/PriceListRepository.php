@@ -16,28 +16,27 @@ class PriceListRepository extends ServiceEntityRepository
         parent::__construct($registry, PriceList::class);
     }
 
-//    /**
-//     * @return PriceList[] Returns an array of PriceList objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function save(PriceList $priceList): bool
+    {
+        ##query 
+        return true;
+    }
 
-//    public function findOneBySomeField($value): ?PriceList
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findById(int $priceListId): array
+    {
+        ##query
+        return [];
+    }
+
+    public function getAllPriceLists(): array
+    {
+        ##query 
+        return [];
+    }
+
+    public function deleteById(int $priceListId): bool
+    {
+        ##query 
+        return true;
+    }
 }

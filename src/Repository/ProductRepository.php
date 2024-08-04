@@ -7,7 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Product>
+ * @extends ServiceEntityRepository<Category>
  */
 class ProductRepository extends ServiceEntityRepository
 {
@@ -34,7 +34,7 @@ class ProductRepository extends ServiceEntityRepository
         return [];
     }
 
-    public function deleteProduct(int $productId): bool
+    public function deleteById(int $productId): bool
     {
         ##query 
         return true;

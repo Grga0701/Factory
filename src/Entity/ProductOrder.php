@@ -22,6 +22,9 @@ class ProductOrder
     #[ORM\Column]
     private ?float $price = null;
 
+    #[ORM\Column]
+    private ?int $tax = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class ProductOrder
     public function setPrice(float $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getTax(): ?int
+    {
+        return $this->tax;
+    }
+
+    public function setTax(float $tax): static
+    {
+        $this->tax = $tax;
 
         return $this;
     }

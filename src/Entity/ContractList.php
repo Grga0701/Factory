@@ -24,6 +24,12 @@ class ContractList
     #[ORM\Column]
     private ?int $SKU = null;
 
+    #[ORM\Column]
+    private ?string $modificator = null;
+
+    #[ORM\Column]
+    private ?int $modificatorValue = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +67,30 @@ class ContractList
     public function setSKU(int $SKU): static
     {
         $this->SKU = $SKU;
+
+        return $this;
+    }
+
+    public function getModificator(): ?string
+    {
+        return $this->modificator;
+    }
+
+    public function setModificator(int $modificator): static
+    {
+        $this->modificator = $modificator;
+
+        return $this;
+    }
+
+    public function getModificatorValue(): ?int
+    {
+        return $this->modificatorValue;
+    }
+
+    public function setModificatorValue(int $modificatorValue): static
+    {
+        $this->modificatorValue = $modificatorValue;
 
         return $this;
     }

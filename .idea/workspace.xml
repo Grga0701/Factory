@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7291114a-29b7-4550-8ee5-e4a6c8af933b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Application/CategoryService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application/CategoryServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application/PriceLIstServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application/PriceListService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application/UserService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application/UserServiceInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/PriceListController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/EEEDiagram.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ContractList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ContractList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PriceList.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PriceList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ProductOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ProductOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PriceListRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PriceListRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProductRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProductRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/Factory/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php@7.4/7.4.33_1/bin/php" />
+  <component name="ProjectId" id="2k9e3RnA4tlAqw1Yf4Z9TMSmlxQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/grgiceug/Desktop/Projects/Factory",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.spelling",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7291114a-29b7-4550-8ee5-e4a6c8af933b" name="Changes" comment="" />
+      <created>1722700020446</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722700020446</updated>
+      <workItem from="1722700021490" duration="7154000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
