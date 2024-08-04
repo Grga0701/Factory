@@ -22,6 +22,17 @@ class Category
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    public function __construct(
+        int $id,
+        string $name,
+        string $description
+    )
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->description = $description;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

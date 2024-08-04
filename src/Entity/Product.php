@@ -23,9 +23,6 @@ class Product
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?float $price = null;
-
-    #[ORM\Column]
     private ?int $SKU = null;
 
     #[ORM\Column(nullable: true)]
@@ -37,13 +34,11 @@ class Product
     public function __construct(
         string $name, 
         string $description,
-        float $price, 
         int $SKU, 
         bool $published)
     {
         $this->name = $name;
         $this->description = $description;
-        $this->price = $price;
         $this->SKU = $SKU;
         $this->published = $published;
     }
@@ -73,18 +68,6 @@ class Product
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): static
-    {
-        $this->price = $price;
 
         return $this;
     }

@@ -25,6 +25,19 @@ class ProductOrder
     #[ORM\Column]
     private ?int $tax = null;
 
+    public function __construct(
+        int $orderId,
+        int $productId,
+        float $price,
+        int $tax
+    )
+    {
+        $this->orderId = $orderId;
+        $this->productId = $productId;
+        $this->price = $price;
+        $this->tax = $tax;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

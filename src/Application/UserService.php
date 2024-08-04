@@ -15,14 +15,21 @@ class UserService implements UserServiceInterface
 
     public function createUser(array $data): bool
     {
-        $user = new User($data['name'], $data['description'], $data['price'], $data['SKU'], $data['published']);
-        return $this->userRepository->save($user);
+        return $this->userRepository->save($data);
     }
 
     public function getUserById(int $userId): User
     {
         $data = $this->userRepository->findById($userId);
-        $user = new User($data['name'], $data['description'], $data['price'], $data['SKU'], $data['published']);
+        $user = new User(
+            $data['id'],
+            $data['name'],
+            $data['lastname'],
+            $data['address'],
+            $data['phone_number'],
+            $data['date_of_birth'],
+            $data['date_of_registration']
+        );
 
         return $user;
     }

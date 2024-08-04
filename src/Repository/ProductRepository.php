@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use App\Entity\ProductOrder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,10 +23,10 @@ class ProductRepository extends ServiceEntityRepository
         return true;
     }
 
-    public function findById(int $productId): array
+    public function getProductById(int $productId): Product
     {
         ##query
-        return [];
+        return new Product();
     }
     
     public function getAllProducts(): array

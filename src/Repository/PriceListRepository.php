@@ -16,9 +16,15 @@ class PriceListRepository extends ServiceEntityRepository
         parent::__construct($registry, PriceList::class);
     }
 
-    public function save(PriceList $priceList): bool
+    public function getPriceForAProduct(int $SKU): bool
     {
         ##query 
+        return true;
+    }
+
+    public function save(PriceList $priceList): bool
+    {
+        ##query
         return true;
     }
 

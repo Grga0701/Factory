@@ -30,6 +30,22 @@ class ContractList
     #[ORM\Column]
     private ?int $modificatorValue = null;
 
+    public function __construct(
+        int $id,
+        int $userId,
+        float $price,
+        int $SKU,
+        string $modificator,
+        int $modificatorValue
+    ){
+        $this->id = $id;
+        $this->userId = $userId;
+        $this->price = $price;
+        $this->SKU = $SKU;
+        $this->modificator = $modificator;
+        $this->modificatorValue = $modificatorValue;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

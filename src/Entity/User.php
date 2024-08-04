@@ -34,6 +34,28 @@ class User
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateOfRegistration = null;
+    private string $userId;
+    private string $lastname;
+    private string $address;
+
+    public function __construct(
+        int $userId,
+        string $name,
+        string $lastname,
+        string $address,
+        int $phoneNumber,
+        DateTimeInterface $dateOfBirth,
+        DateTimeInterface $dateOfRegistration,
+    )
+    {
+        $this->userId = $userId;
+        $this->name = $name;
+        $this->lastname = $lastname;
+        $this->address = $address;
+        $this->phoneNumber = $phoneNumber;
+        $this->dateOfBirth = $dateOfBirth;
+        $this->dateOfRegistration = $dateOfRegistration;
+    }
 
     public function getId(): ?int
     {

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\OrderRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,13 +21,27 @@ class Order
     #[ORM\Column]
     private ?int $userId = null;
 
+    #[ORM\Column]
+    private ?float $price = null;
+
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
     private ?string $dynamicFields = null;
 
-
+    public function __construct(
+        int $userId,
+        ?float $price,
+        DateTimeInterface $date,
+        string $dynamicFields,
+    )
+    {
+        $this->userId = $userId;
+        $this->price = $price;
+        $this->date = $date;
+        $this->dynamicFields = $dynamicFields;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -40,6 +55,18 @@ class Order
     public function setUserId(int $userId): static
     {
         $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }

@@ -16,9 +16,17 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function save(User $user): bool
+    public function save(array $data): bool
     {
-        ##query 
+        ##query
+        $user = new User(
+            $data['name'],
+            $data['lastname'],
+            $data['address'],
+            $data['phone_number'],
+            $data['date_of_birth'],
+            $data['date_of_registration']
+        );
         return true;
     }
 
