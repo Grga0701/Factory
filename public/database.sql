@@ -33,7 +33,7 @@ CREATE TABLE `User` (
   `id` int,
   `name` varchar(255),
   `lastname` varchar(255),
-  `phone_number` int,
+  `phone_number` varchar(20),
   `date_of_birth` datetime,
   `date_of_registration` datetime
 );

@@ -17,9 +17,9 @@ class ContractListRepository extends ServiceEntityRepository
     }
 
 
-    public function getContractListByUserIdAndSKU(int $uderId, int $SKU): ContractList
+    public function getContractListByUserIdAndSKU(int $uderId, int $SKU): ?ContractList
     {
-        return new ContractList();
+        return new ContractList(1,1,1,1,'',1);
     }
 
 }

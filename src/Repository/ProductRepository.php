@@ -3,12 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use App\Entity\ProductOrder;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Category>
+ * @extends ServiceEntityRepository<Product>
  */
 class ProductRepository extends ServiceEntityRepository
 {
@@ -17,28 +16,29 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function save(Product $product): bool
-    {
-        ##query 
-        return true;
-    }
 
-    public function getProductById(int $productId): Product
+    public function findById(int $productId): array
     {
-        ##query
-        return new Product();
-    }
-    
-    public function getAllProducts(): array
-    {
-        ##query 
-        return [];
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.id = :id')
+        ->setParameter('id', $productId)
+        ->getQuery()
+        ->getScalarResult();
     }
 
     public function deleteById(int $productId): bool
     {
-        ##query 
-        return true;
+        return $this->createQueryBuilder('p')
+        ->delete()
+        ->andWhere('p.id = :id')
+        ->setParameter('id', $productId)
+        ->getQuery()
+        ->execute();
     }
-
+    
+    public function getAllProducts(): array
+    {
+        return $this->createQueryBuilder('p')
+        ->getQuery()->getScalarResult();
+    }
 }

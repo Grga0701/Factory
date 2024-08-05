@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use DateTimeInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`User`')]
 #[ApiResource]
 class User
 {
@@ -25,30 +24,13 @@ class User
     private ?string $lastname = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $phoneNumber = null;
+    private ?string $phoneNumber = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateOfBirth = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateOfRegistration = null;
-
-    public function __construct(
-        int $id,
-        string $name,
-        string $lastname,
-        int $phoneNumber,
-        DateTimeInterface $dateOfBirth,
-        DateTimeInterface $dateOfRegistration,
-    )
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->lastname = $lastname;
-        $this->phoneNumber = $phoneNumber;
-        $this->dateOfBirth = $dateOfBirth;
-        $this->dateOfRegistration = $dateOfRegistration;
-    }
 
     public function getId(): ?int
     {
@@ -79,36 +61,36 @@ class User
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(?int $phoneNumber): static
+    public function setPhoneNumber(?string $phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
 
-    public function getDateOfBirth(): ?\DateTimeInterface
+    public function getDateOfBirth(): ?\DateTime
     {
         return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(?\DateTimeInterface $dateOfBirth): static
+    public function setDateOfBirth(?\DateTime $dateOfBirth): static
     {
         $this->dateOfBirth = $dateOfBirth;
 
         return $this;
     }
 
-    public function getDateOfRegistration(): ?\DateTimeInterface
+    public function getDateOfRegistration(): ?\DateTime
     {
         return $this->dateOfRegistration;
     }
 
-    public function setDateOfRegistration(?\DateTimeInterface $dateOfRegistration): static
+    public function setDateOfRegistration(?\DateTime $dateOfRegistration): static
     {
         $this->dateOfRegistration = $dateOfRegistration;
 

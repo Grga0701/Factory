@@ -35,12 +35,14 @@ class Product
         string $name, 
         string $description,
         int $SKU, 
-        bool $published)
+        bool $published,
+        int $category)
     {
         $this->name = $name;
         $this->description = $description;
         $this->SKU = $SKU;
         $this->published = $published;
+        $this->category = $category;
     }
 
     public function getId(): ?int

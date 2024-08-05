@@ -16,33 +16,22 @@ class PriceListRepository extends ServiceEntityRepository
         parent::__construct($registry, PriceList::class);
     }
 
-    public function getPriceForAProduct(int $SKU): bool
+    public function findBySKU(int $SKU): array
     {
-        ##query 
-        return true;
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.sku = :sku')
+        ->setParameter('sku', $SKU)
+        ->getQuery()
+        ->getScalarResult();
     }
 
-    public function save(PriceList $priceList): bool
+    public function deleteBySKU(int $SKU): bool
     {
-        ##query
-        return true;
-    }
-
-    public function findById(int $priceListId): array
-    {
-        ##query
-        return [];
-    }
-
-    public function getAllPriceLists(): array
-    {
-        ##query 
-        return [];
-    }
-
-    public function deleteById(int $priceListId): bool
-    {
-        ##query 
-        return true;
+        return $this->createQueryBuilder('p')
+        ->delete()
+        ->andWhere('u.sku = :sku')
+        ->setParameter('sku', $SKU)
+        ->getQuery()
+        ->execute();
     }
 }

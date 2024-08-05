@@ -26,11 +26,11 @@ class UserController extends AbstractController
         return new JsonResponse($this->userService->getUserById($id));
     }
 
-    #[Route('/user/post', name: 'save_new_user',  methods: ['POST'])]
+    #[Route('/user/create', name: 'save_new_user',  methods: ['POST'])]
     public function SaveUser(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
-        return new JsonResponse($this->userService->createUser($data));
+        return new JsonResponse([],$this->userService->createUser($data));
     }
 
     #[Route('/user/delete/{id}', name: 'delete_user_by_id')]

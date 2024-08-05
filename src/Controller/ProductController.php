@@ -26,16 +26,17 @@ class ProductController extends AbstractController
         return new JsonResponse($this->productService->getProductById($id));
     }
 
-    #[Route('/product/post', name: 'save_new_product',  methods: ['POST'])]
+    #[Route('/product/create', name: 'save_new_product',  methods: ['POST'])]
     public function SaveProduct(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
         return new JsonResponse($this->productService->createProduct($data));
     }
 
-    #[Route('/product/delete/{id}', name: 'delete_product_by_id')]
-    public function DeleteProductsById(int $id): JsonResponse
+    #[Route('/product/delete', name: 'delete_product_by_id',  methods: ['POST'])]
+    public function DeleteProductsById(Request $request): JsonResponse
     {
-        return new JsonResponse($this->productService->deleteProduct($id));
+        $data = json_decode($request->getContent(), true);
+        return new JsonResponse($this->productService->deleteProduct($data['product_id'], $data['SKU']));
     }
 }

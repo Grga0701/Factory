@@ -16,39 +16,28 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function save(array $data): bool
-    {
-        ##query
-        $user = new User(
-            $data['id'],
-            $data['name'],
-            $data['lastname'],
-            $data['phone_number'],
-            $data['date_of_birth'],
-            $data['date_of_registration']
-        );
-        return true;
-    }
-
     public function findById(int $userId): array
     {
-        ##query
-        return [];
+        return $this->createQueryBuilder('u')
+        ->andWhere('u.id = :userId')
+        ->setParameter('userId', $userId)
+        ->getQuery()
+        ->getScalarResult();
     }
 
     public function getAllUsers(): array
     {
-        $test = $this->createQueryBuilder('u')
-        ->andWhere('u.name = :userName')
-        ->setParameter('userName', 'Marko')
-        ->getQuery()
-        ->getResult();
-        return [];
+        return $this->createQueryBuilder('u')
+        ->getQuery()->getScalarResult();
     }
 
     public function deleteById(int $userId): bool
     {
-        ##query 
-        return true;
+        return $this->createQueryBuilder('u')
+        ->delete()
+        ->andWhere('u.id = :id')
+        ->setParameter('id', $userId)
+        ->getQuery()
+        ->execute();
     }
 }

@@ -27,7 +27,7 @@ class OrderService implements OrderServiceInterface
     public function createOrder(array $data): bool
     {
         $orderPrice = null;
-        $order = new Order($data['user_id'],$orderPrice, $data['date'], $data['dynamic_field']);
+        $order = new Order($data['user_id'],$orderPrice, $data['date'], $data['dynamic_fields']);
         foreach ($data['products'] as $productId){
             $product = $this->productRepository->getProductById($productId);
             $priceList = $this->priceListRepository->getPriceForAProduct($product->getSKU());
@@ -43,7 +43,7 @@ class OrderService implements OrderServiceInterface
     public function getOrderById(int $orderId): Order
     {
         $data = $this->orderRepository->findById($orderId);
-        $order = new Order($data['user_id'], $data['price'], $data['date'], $data['dynamic_field']);
+        $order = new Order($data['user_id'], $data['price'], $data['date'], $data['dynamic_fields']);
 
         return $order;
     }

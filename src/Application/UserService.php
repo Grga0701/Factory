@@ -5,33 +5,46 @@ namespace App\Application;
 use App\Entity\User;
 use App\Application\UserServiceInterface;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use DateTime;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\DBAL\Exception as DBALException;
 
 class UserService implements UserServiceInterface
 {
 
-    public function __construct(public UserRepository $userRepository)
+    public function __construct(public UserRepository $userRepository, public EntityManagerInterface $entityManager)
     {
     }
 
-    public function createUser(array $data): bool
+    public function createUser(array $data): int
     {
-        return $this->userRepository->save($data);
+        $user = new User();
+        $user->setName($data['name']);
+        $user->setLastName($data['lastname']);
+        $user->setPhoneNumber($data['phonenumber'] ?? null);
+        $user->setDateOfBirth(new DateTime($data['dateOfBirth'] ?? 'now'));
+        $user->setDateOfRegistration(new DateTime($data['dateOfRegistration'] ?? 'now'));
+
+        try {
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+            return JsonResponse::HTTP_CREATED;
+        } catch (ORMException $e) {
+            return JsonResponse::HTTP_INTERNAL_SERVER_ERROR;
+        } catch (DBALException $e) {
+            return JsonResponse::HTTP_INTERNAL_SERVER_ERROR;
+        } catch (\Exception $e) {
+            return JsonResponse::HTTP_INTERNAL_SERVER_ERROR;
+        }
+
+        return true;
     }
 
-    public function getUserById(int $userId): User
+    public function getUserById(int $userId): array
     {
-        $data = $this->userRepository->findById($userId);
-        $user = new User(
-            $data['id'],
-            $data['name'],
-            $data['lastname'],
-            $data['address'],
-            $data['phone_number'],
-            $data['date_of_birth'],
-            $data['date_of_registration']
-        );
-
-        return $user;
+        return $this->userRepository->findById($userId);
     }
 
     public function getAllUsers(): array
