@@ -20,9 +20,9 @@ class UserRepository extends ServiceEntityRepository
     {
         ##query
         $user = new User(
+            $data['id'],
             $data['name'],
             $data['lastname'],
-            $data['address'],
             $data['phone_number'],
             $data['date_of_birth'],
             $data['date_of_registration']
@@ -38,7 +38,11 @@ class UserRepository extends ServiceEntityRepository
 
     public function getAllUsers(): array
     {
-        ##query 
+        $test = $this->createQueryBuilder('u')
+        ->andWhere('u.name = :userName')
+        ->setParameter('userName', 'Marko')
+        ->getQuery()
+        ->getResult();
         return [];
     }
 

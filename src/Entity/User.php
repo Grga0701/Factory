@@ -6,9 +6,10 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use DateTimeInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
+#[ORM\Table(name: '`User`')]
 #[ApiResource]
 class User
 {
@@ -21,10 +22,7 @@ class User
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $lastName = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Address = null;
+    private ?string $lastname = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $phoneNumber = null;
@@ -34,24 +32,19 @@ class User
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $dateOfRegistration = null;
-    private string $userId;
-    private string $lastname;
-    private string $address;
 
     public function __construct(
-        int $userId,
+        int $id,
         string $name,
         string $lastname,
-        string $address,
         int $phoneNumber,
         DateTimeInterface $dateOfBirth,
         DateTimeInterface $dateOfRegistration,
     )
     {
-        $this->userId = $userId;
+        $this->id = $id;
         $this->name = $name;
         $this->lastname = $lastname;
-        $this->address = $address;
         $this->phoneNumber = $phoneNumber;
         $this->dateOfBirth = $dateOfBirth;
         $this->dateOfRegistration = $dateOfRegistration;
@@ -76,24 +69,12 @@ class User
 
     public function getLastName(): ?string
     {
-        return $this->lastName;
+        return $this->lastname;
     }
 
     public function setLastName(string $lastName): static
     {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getAddress(): ?string
-    {
-        return $this->Address;
-    }
-
-    public function setAddress(?string $Address): static
-    {
-        $this->Address = $Address;
+        $this->lastname = $lastName;
 
         return $this;
     }

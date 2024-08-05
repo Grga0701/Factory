@@ -25,7 +25,6 @@ CREATE TABLE `Product` (
   `category` int,
   `name` varchar(255),
   `description` varchar(255),
-  `price` float,
   `SKU` int,
   `published` bool
 );

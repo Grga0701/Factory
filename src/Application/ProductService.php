@@ -22,7 +22,7 @@ class ProductService implements ProductServiceInterface
     public function getProductById(int $productId): Product
     {
         $data = $this->productRepository->findById($productId);
-        $product = new Product($data['name'], $data['description'], $data['price'], $data['SKU'], $data['published']);
+        $product = new Product($data['name'], $data['description'], $data['SKU'], $data['published']);
 
         return $product;
     }

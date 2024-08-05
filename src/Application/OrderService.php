@@ -2,10 +2,8 @@
 
 namespace App\Application;
 
-use App\Entity\ContractList;
 use App\Entity\Order;
 use App\Application\OrderServiceInterface;
-use App\Entity\Product;
 use App\Entity\ProductOrder;
 use App\Repository\ContractListRepository;
 use App\Repository\OrderRepository;
@@ -60,7 +58,7 @@ class OrderService implements OrderServiceInterface
         return  $this->orderRepository->deleteById($orderId);
     }
 
-    public function priceCalculator(int $userId, int $SKU, float $price): float
+    private function priceCalculator(int $userId, int $SKU, float $price): float
     {
         $contractList = $this->contractListRepository->getContractListByUserIdAndSKU(
             $userId,
