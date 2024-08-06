@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +28,7 @@ class OrderController extends AbstractController
         return new JsonResponse($this->orderService->getOrderById($id));
     }
 
-    #[Route('/order/post', name: 'save_new_order',  methods: ['POST'])]
+    #[Route('/order/create', name: 'save_new_order',  methods: ['POST'])]
     public function CreateOrder(Request $request): JsonResponse
     {
         $data = json_decode($request->getContent(), true);

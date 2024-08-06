@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Application;
+declare(strict_types=1);
 
-use App\Entity\Product;
+namespace App\Application;
 
 interface ProductServiceInterface
 {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application;
 
 use App\Entity\PriceList;
@@ -48,8 +50,8 @@ class ProductService implements ProductServiceInterface
     public function getProductById(int $productId): array
     {
         $product =  $this->productRepository->findById($productId);
-        $priceList = $this->priceListRepository->findBySKU($product['SKU']);
-        $product['price'] = $priceList['price'];
+        $priceList = $this->priceListRepository->findBySKU($product['p_SKU']);
+        $product['p_price'] = $priceList[0];
         return $product;
     }
 
@@ -57,8 +59,8 @@ class ProductService implements ProductServiceInterface
     {
         $productsWithPrice = [];
         foreach($this->productRepository->getAllProducts() as $product){
-            $priceList = $this->priceListRepository->findBySKU($product['SKU']);
-            $product['price'] = $priceList['price'];
+            $priceList = $this->priceListRepository->findBySKU($product['p_SKU']);
+            $product['p_price'] = $priceList[0];
             $productsWithPrice[]= $product;
         }
         return $productsWithPrice;

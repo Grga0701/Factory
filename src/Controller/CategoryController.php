@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +19,7 @@ class CategoryController extends AbstractController
     #[Route('/category/get/all', name: 'get_all_categorys')]
     public function GetAllCategories(): JsonResponse
     {
-        return new JsonResponse($this->categoryService->getAllCategorys());
+        return new JsonResponse($this->categoryService->getAllCategories());
     }
 
     #[Route('/category/get/{id}', name: 'get_category_by_id')]

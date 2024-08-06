@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
@@ -9,6 +13,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
+#[ORM\Table(name: '`order`')]
 #[ApiResource]
 class Order
 {
@@ -32,7 +37,7 @@ class Order
     public function __construct(
         int $userId,
         ?float $price,
-        DateTimeInterface $date,
+        \DateTime $date,
         string $dynamicFields,
     )
     {
@@ -70,12 +75,12 @@ class Order
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
 
-    public function setDate(?\DateTimeInterface $date): static
+    public function setDate(?\DateTime $date): static
     {
         $this->date = $date;
 

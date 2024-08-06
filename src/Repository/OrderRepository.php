@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Order;
@@ -21,21 +23,35 @@ class OrderRepository extends ServiceEntityRepository
         return true;
     }
 
-    public function findById(int $userId): array
+    public function findById(int $id): array
     {
-        ##query
-        return [];
+        return $this->createQueryBuilder('o')
+        ->andWhere('o.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery()->getScalarResult();
     }
 
     public function getAllOrders(): array
     {
-        ##query
-        return [];
+        return $this->createQueryBuilder('o')
+        ->getQuery()->getScalarResult();
     }
 
-    public function deleteById(int $userId): bool
+    public function getAllOrdersForAUser(int $userId): array
     {
-        ##query
-        return true;
+        return $this->createQueryBuilder('o')
+        ->andWhere('o.userId = :userId')
+        ->setParameter('userId', $userId)
+        ->getQuery()->getScalarResult();
+    }
+
+    public function deleteById(int $orderId): bool
+    {
+        return $this->createQueryBuilder('u')
+        ->delete()
+        ->andWhere('u.id = :id')
+        ->setParameter('id', $orderId)
+        ->getQuery()
+        ->execute();
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Product;
@@ -19,11 +21,12 @@ class ProductRepository extends ServiceEntityRepository
 
     public function findById(int $productId): array
     {
-        return $this->createQueryBuilder('p')
+        $data = $this->createQueryBuilder('p')
         ->andWhere('p.id = :id')
         ->setParameter('id', $productId)
         ->getQuery()
         ->getScalarResult();
+        return $data[0];
     }
 
     public function deleteById(int $productId): bool

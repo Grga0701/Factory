@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\ProductOrder;
@@ -16,7 +18,21 @@ class ProductOrderRepository extends ServiceEntityRepository
         parent::__construct($registry, ProductOrder::class);
     }
 
-    public function save(ProductOrder $productOrder): void
+    public function getProductsByOrderId(int $orderId): array
     {
+        return $this->createQueryBuilder('p')
+        ->andWhere('p.orderId = :id')
+        ->setParameter('id', $orderId)
+        ->getQuery()->getScalarResult();
+    }
+
+    public function deleteByOrderId(int $orderId) : bool 
+    {
+        return $this->createQueryBuilder('o')
+        ->delete()
+        ->andWhere('o.orderId = :id')
+        ->setParameter('id', $orderId)
+        ->getQuery()
+        ->execute();
     }
 }

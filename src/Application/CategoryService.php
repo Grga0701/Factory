@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application;
 
-use App\Entity\Category;
 use App\Application\CategoryServiceInterface;
 use App\Repository\CategoryRepository;
 
@@ -14,25 +15,21 @@ class CategoryService implements CategoryServiceInterface
 
     public function createCategory(array $data): bool
     {
-        $category = new Category($data['name'], $data['description'], $data['price'], $data['SKU'], $data['published']);
-        return $this->categoryRepository->save($category);
+        return true;
     }
 
-    public function getCategoryById(int $categoryId): Category
+    public function getCategoryById(int $categoryId): array
     {
-        $data = $this->categoryRepository->findById($categoryId);
-        $category = new Category($data['name'], $data['description'], $data['price'], $data['SKU'], $data['published']);
-
-        return $category;
+        return [];
     }
 
     public function getAllCategories(): array
     {
-        return $this->categoryRepository->getAllCategories();
+        return [];
     }
 
     public function deleteCategory(int $categoryId): bool
     {
-        return  $this->categoryRepository->deleteById($categoryId);
+        return true;
     }
 }

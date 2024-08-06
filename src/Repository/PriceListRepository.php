@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\PriceList;
@@ -19,17 +21,17 @@ class PriceListRepository extends ServiceEntityRepository
     public function findBySKU(int $SKU): array
     {
         return $this->createQueryBuilder('p')
-        ->andWhere('p.sku = :sku')
+        ->select('p.price')
+        ->andWhere('p.SKU = :sku')
         ->setParameter('sku', $SKU)
-        ->getQuery()
-        ->getScalarResult();
+        ->getQuery()->getSingleColumnResult();
     }
 
     public function deleteBySKU(int $SKU): bool
     {
         return $this->createQueryBuilder('p')
         ->delete()
-        ->andWhere('u.sku = :sku')
+        ->andWhere('p.SKU = :sku')
         ->setParameter('sku', $SKU)
         ->getQuery()
         ->execute();

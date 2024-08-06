@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
@@ -31,14 +33,12 @@ class ContractList
     private ?int $modificatorValue = null;
 
     public function __construct(
-        int $id,
         int $userId,
         float $price,
         int $SKU,
         string $modificator,
         int $modificatorValue
     ){
-        $this->id = $id;
         $this->userId = $userId;
         $this->price = $price;
         $this->SKU = $SKU;
